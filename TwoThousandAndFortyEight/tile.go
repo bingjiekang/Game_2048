@@ -135,9 +135,11 @@ func (t *Tile) stopAnimation() {
 	t.poppingCount = 0
 }
 
+// 获取当前坐标等于x,y的
 func tileAt(tiles map[*Tile]struct{}, x, y int) *Tile {
 	var result *Tile
 	for t := range tiles {
+		// 如果当前的x,y 不等于x或者y则进入下一个循环
 		if t.current.x != x || t.current.y != y {
 			continue
 		}
@@ -149,6 +151,7 @@ func tileAt(tiles map[*Tile]struct{}, x, y int) *Tile {
 	return result
 }
 
+// 下一位置的x和y
 func currentOrNextTileAt(tiles map[*Tile]struct{}, x, y int) *Tile {
 	var result *Tile
 	for t := range tiles {

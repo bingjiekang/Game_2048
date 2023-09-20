@@ -8,12 +8,14 @@ import (
 )
 
 func main() {
+	// 创建一个游戏对象
 	game, err := twothousandandfortyeight.NewGame()
 	if err != nil {
 		log.Fatal(err)
 	}
-	// Specify the window size as you like. Here, a doubled size is specified.
+	// 游戏窗口大小
 	ebiten.SetWindowSize(twothousandandfortyeight.ScreenWidth, twothousandandfortyeight.ScreenHeight)
+	// 游戏标题
 	ebiten.SetWindowTitle("2048")
 	// Call ebiten.RunGame to start your game loop.
 	if err := ebiten.RunGame(game); err != nil {

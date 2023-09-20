@@ -5,12 +5,13 @@ import (
 	"github.com/hajimehoshi/ebiten/v2/inpututil"
 )
 
-/* 对输入的上下左右进行获取和反馈
+/* 对输入的上下左右进行获取和反馈处理
 
  */
 
 type Dir int
 
+// 定义向上,向右,向下,向左 对应0-3
 const (
 	DirUp Dir = iota
 	DirRight
@@ -51,6 +52,7 @@ func (d Dir) String() string {
 }
 
 // Vector为每个轴返回一个[-1，1]值。
+// 以左上角为原点坐标(0,0),x轴向右为正方向,y轴向下为正方向
 func (d Dir) Vector() (x, y int) {
 	switch d {
 	case DirUp:
@@ -185,9 +187,8 @@ func (i *Input) Update() {
 	}
 }
 
-//Dir返回当前按下的方向。
-//如果未按下方向键，Dir将返回false。
-
+// Dir返回当前按下的方向。
+// 如果未按下方向键，Dir将返回false。
 func (i *Input) Dir() (Dir, bool) {
 	if inpututil.IsKeyJustPressed(ebiten.KeyArrowUp) {
 		return DirUp, true
